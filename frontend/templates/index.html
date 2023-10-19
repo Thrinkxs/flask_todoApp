@@ -33,22 +33,25 @@
         </button>
       </form>
 
-      <div class="bg-teal-400">
-        <ul>
+      <div class="bg-teal-400 p-4 my-10 w-1/2 mx-auto rounded-lg">
+        <ul class="space-y-4 w-1/2 mx-auto">
           {% for todo in todos %}
-          <li>
-            {{ todo.task }} {% if todo.completed %}
-            <span style="color: green">(Completed)</span>
+          <li class="flex items-center justify-between">
+            <span class="text-black dark:text-white text-lg"
+              >{{ todo.task }}</span
+            >
+            {% if todo.completed %}
+            <span class="text-green-600 dark:text-green-400">(Completed)</span>
             {% else %}
             <a
               href="{{ url_for('blueprint.complete', todo_id=todo.id) }}"
-              style="color: blue"
+              class="text-blue-600 dark:text-blue-400 hover:underline"
               >Mark as Complete</a
             >
             {% endif %}
             <a
               href="{{ url_for('blueprint.delete', todo_id=todo.id) }}"
-              style="color: red"
+              class="text-red-600 dark:text-red-400 hover:underline"
               >Delete</a
             >
           </li>

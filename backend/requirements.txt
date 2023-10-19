@@ -1,0 +1,4 @@
+flask
+FLASK_SQLAlchemy
+python_dotenv
+psycopg2-binary
