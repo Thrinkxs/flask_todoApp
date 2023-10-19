@@ -13,6 +13,9 @@ class TestCompleteRoute(unittest.TestCase):
 
         self.app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mkavnntb:Lvxr4i1weHxWW5wMRyHoCoPyXPwkfL5J@rain.db.elephantsql.com/mkavnntb'
 
+        self.app.config['TESTING'] = True
+        self.app.config['SERVER_NAME'] = 'localhost'
+
         self.app_context = self.app.app_context()
         self.app_context.push()
 
