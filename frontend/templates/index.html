@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='dist/css/output.css')}}"
+    />
+    <title>Todo App</title>
+  </head>
+  <body>
+    <main>
+      <h1 class="text-center my-10">What do you want to do today?</h1>
+      <form
+        class="flex justify-center items-center mx-auto w-1/2 gap-5"
+        method="post"
+        action="{{ url_for('blueprint.add_todo') }}"
+      >
+        <input
+          type="text"
+          name="task"
+          id="todo"
+          required
+          placeholder="Enter your todo"
+          class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+        <button
+          type="submit"
+          class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+        >
+          Add
+        </button>
+      </form>
+
+      <div class="bg-teal-400">
+        <ul>
+          {% for todo in todos %}
+          <li>
+            {{ todo.task }} {% if todo.completed %}
+            <span style="color: green">(Completed)</span>
+            {% else %}
+            <a
+              href="{{ url_for('blueprint.complete', todo_id=todo.id) }}"
+              style="color: blue"
+              >Mark as Complete</a
+            >
+            {% endif %}
+            <a
+              href="{{ url_for('blueprint.delete', todo_id=todo.id) }}"
+              style="color: red"
+              >Delete</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </main>
+    <footer class="flex items-center justify-center font-bold">
+      Copyright © Built by
+      <a
+        href="https://github.com/Thrinkxs/"
+        target="_blank"
+        class="px-2 text-blue-400"
+      >
+        Thrinkxs</a
+      >
+    </footer>
+  </body>
+</html>

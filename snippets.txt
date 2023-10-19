@@ -1,0 +1,70 @@
+      {% comment %}
+      <hr />
+      <div class="mb-6">
+        <label
+          for="default-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Default input</label
+        >
+        <input
+          type="text"
+          id="default-input"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+        <button
+          type="button"
+          class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+        >
+          Dark
+        </button>
+      </div>
+      {% endcomment %}
+
+      
+# @blueprint.route('/')
+# def index():
+#     return render_template('index.html')
+
+# API endpoint to get todos
+
+
+# @blueprint.route('/todos', methods=['GET'])
+# def get_todos():
+#     return jsonify(todos)
+
+# API endpoint to add a new todo
+
+
+@blueprint.route('/add_todo', methods=['POST'])
+def add_todo():
+    data = request.get_json()
+    new_todo = data.get('todo')
+    if new_todo:
+        todos.append(new_todo)
+        return 'Todo added', 201
+    return 'Invalid request', 400
+
+# API endpoint to mark a todo as completed
+
+
+@blueprint.route('/complete_todo', methods=['POST'])
+def complete_todo():
+    data = request.get_json()
+    todo_index = data.get('index')
+    if 0 <= todo_index < len(todos):
+        # Modify the todo as needed to mark it as completed
+        todos[todo_index] = '✔ ' + todos[todo_index]
+        return 'Todo marked as completed', 200
+    return 'Invalid request', 400
+
+# API endpoint to delete a todo
+
+
+@blueprint.route('/delete_todo', methods=['POST'])
+def delete_todo():
+    data = request.get_json()
+    todo_index = data.get('index')
+    if 0 <= todo_index < len(todos):
+        todos.pop(todo_index)
+        return 'Todo deleted', 200
+    return 'Invalid request', 400
