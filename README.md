@@ -9,8 +9,7 @@ This is a simple Todo App built with Python and Flask, utilizing a PostgreSQL da
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Features
 
