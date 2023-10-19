@@ -38,10 +38,10 @@ Before running this application, you need to have the following installed:
 
    ```
 
-2. cd backend
-   python -m venv venv
-   run venv\Scrips\activate
-   pip install -r requirements.txt (optionally, run pip install flask SQLAlchemy)
+2. - cd backend
+   - python -m venv venv
+   - run venv\Scrips\activate
+   - pip install -r requirements.txt (optionally, run pip install flask SQLAlchemy)
 
 ### USAGE
 
