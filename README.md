@@ -45,7 +45,8 @@ Before running this application, you need to have the following installed:
 
 ### USAGE
 
-run python app.py
+- run python app.py start flask dev server
+- - run python complete-unit.py start unit test
 
 3. cd frontend
    run npm install
